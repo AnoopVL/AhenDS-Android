@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, registerSchool.class);
+                Intent intent = new Intent(MainActivity.this, dsInfo.class);
                 startActivity(intent);
             }
         });

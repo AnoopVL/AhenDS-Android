@@ -24,7 +24,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/darkBlue"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.058" />
+
+    <Button
+        android:id="@+id/registeredUsers"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/darkBlue"
+        android:text="Registered Students"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regBtn"
+        app:layout_constraintVertical_bias="0.029" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
