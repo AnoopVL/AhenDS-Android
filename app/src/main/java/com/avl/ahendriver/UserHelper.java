@@ -1,18 +1,20 @@
 package com.avl.ahendriver;
 
 public class UserHelper {
-    String name, email, phone, address;
+    String name, email, phone, address, dsName;
 
     public UserHelper() {
 
     }
 
-    public UserHelper(String name, String email, String phone, String address) {
+    public UserHelper(String name, String email, String phone, String address, String dsName) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.dsName = dsName;
     }
+
 
     public String getName() {
         return name;
@@ -45,4 +47,7 @@ public class UserHelper {
     public void setAddress(String password) {
         this.address = password;
     }
+
+    public String getDsName() { return dsName; }
+    public void setDsName(String dsName) { this.dsName = dsName; }
 }
