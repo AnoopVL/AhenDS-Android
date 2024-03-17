@@ -66,6 +66,16 @@ public class dsInfo extends AppCompatActivity {
                 Toast.makeText(dsInfo.this, "Driving School Registered Successfully!!", Toast.LENGTH_SHORT).show();
             }
         });
+//        registerSchool.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                rootNode = FirebaseDatabase.getInstance();
+//                reference = rootNode.getReference("drivingSchool");
+//
+//                reference.setValue("test Data");
+//            }
+//        });
+
 
     }
     private Boolean validateName(){

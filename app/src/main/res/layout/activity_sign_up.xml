@@ -4,18 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".signUp"
     android:orientation="vertical"
-    tools:context=".dsInfo"
-    android:backgroundTint="@color/white"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     >
 
+    <ImageView
+        android:id="@+id/dsLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/dsimg_trans"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="64dp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register your Driving School here "
-        android:paddingTop="50dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"/>
+        android:id="@+id/welcomeBack"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:fontFamily="@font/bungee"
+        android:text="welcome"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +37,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dsFullName"
+            android:id="@+id/fullName"
             android:hint="Full name"
             app:boxStrokeColor="@color/black"
             android:outlineAmbientShadowColor="@color/black"
@@ -38,82 +50,79 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email"
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dsName"
-            android:hint="Driving School Name"
-            app:boxStrokeColor="@color/black"
+            android:hint="E-mail"
             android:outlineAmbientShadowColor="@color/black"
-            app:hintTextColor="@color/black"
-            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dsPhoneNo"
-            android:hint="Phone no."
             app:boxStrokeColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
-            app:hintTextColor="@color/black"
-            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox">
+            app:hintTextColor="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:inputType="phone"/>
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone"
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone number"
+            android:outlineAmbientShadowColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:inputType="number"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dsEmail"
-            android:hint="Email"
+            android:id="@+id/password"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
             app:boxStrokeColor="@color/black"
             android:outlineAmbientShadowColor="@color/black"
             app:hintTextColor="@color/black"
-            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox">
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+            >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dsAddress"
-            android:hint="Address"
-            app:boxStrokeColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
-            app:hintTextColor="@color/black"
-            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/registerSchool"
+            android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/black"
             android:onClick="registerUser"
-            android:text="Register School"
+            android:text="Sign-up"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_margin="20dp"/>
+            android:textSize="20dp" />
 
+        <Button
+            android:id="@+id/loginHere"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="#00000000"
+            android:text="Already a user? Sign in here"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
 
-
+            />
 
     </LinearLayout>
-
 
 </LinearLayout>
