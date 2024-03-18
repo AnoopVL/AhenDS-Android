@@ -46,7 +46,7 @@ public class signUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users");
+                reference = rootNode.getReference("dsUsers");
 
                 if(!validateName() |!validatePassword() | !validatePhoneNo() | !validateEmail())
                 {

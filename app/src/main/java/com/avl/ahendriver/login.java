@@ -99,7 +99,7 @@ public class login extends AppCompatActivity {
         String userEnteredPhone = Phone.getEditText().getText().toString();
         String userEnteredPassword = Password.getEditText().getText().toString();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("dsUsers");
         Query checkPhone = reference.orderByChild("phone").equalTo(userEnteredPhone);
 
         checkPhone.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -117,12 +117,12 @@ public class login extends AppCompatActivity {
                         String emailFromDB = snapshot.child(userEnteredPhone).child("email").getValue(String.class);
                         String phoneFromDB = snapshot.child(userEnteredPhone).child("phone").getValue(String.class);
 
-                        Intent dataIntent = new Intent(login.this, dashboard.class);
-                        dataIntent.putExtra("fullName", fullNameFromDB);
-                        dataIntent.putExtra("email", emailFromDB);
-                        dataIntent.putExtra("phone", phoneFromDB);
-                        dataIntent.putExtra("password", passwordFromDB);
-                        dataIntent.putExtra("fragmentToLoad", "home");
+                        Intent dataIntent = new Intent(login.this, dsInfo.class);
+//                        dataIntent.putExtra("fullName", fullNameFromDB);
+//                        dataIntent.putExtra("email", emailFromDB);
+//                        dataIntent.putExtra("phone", phoneFromDB);
+//                        dataIntent.putExtra("password", passwordFromDB);
+//                        dataIntent.putExtra("fragmentToLoad", "home");
                         startActivity(dataIntent);
 //                        Intent intent = new Intent(login.this, dashboard.class);
 //                        startActivity(intent);
