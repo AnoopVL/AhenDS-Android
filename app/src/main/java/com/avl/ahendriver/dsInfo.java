@@ -60,7 +60,7 @@ public class dsInfo extends AppCompatActivity {
                 String regPhone = dsPhoneNo.getEditText().getText().toString();
                 String regAddress = dsAddress.getEditText().getText().toString();
 
-                UserHelper helperClass = new UserHelper(regFullName, regEmail, regPhone, regAddress, regDSName);
+                UserDSHelper helperClass = new UserDSHelper(regFullName, regEmail, regPhone, regAddress, regDSName);
                 reference.child(regDSName).setValue(helperClass);
 
                 Toast.makeText(dsInfo.this, "Driving School Registered Successfully!!", Toast.LENGTH_SHORT).show();
