@@ -80,7 +80,7 @@ public class profile extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(profile.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
 
