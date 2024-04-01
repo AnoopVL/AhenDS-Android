@@ -38,6 +38,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 //    implementation("com.google.android.material:compose-theme-adapter:1.1.0")
+    implementation ("com.google.android.material:material:1.5.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.activity:activity:1.8.0")
     implementation("com.google.firebase:firebase-database:20.3.1")

@@ -45,7 +45,8 @@ public class dashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(dashboard.this, "Ruku zara Sabar Karo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(dashboard.this, profile.class);
+                startActivity(intent);
             }
         });
 

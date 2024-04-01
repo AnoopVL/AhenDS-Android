@@ -3,6 +3,7 @@ package com.avl.ahendriver;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView drivingSchool;
     TextView ahen, solgan;
     private Button regBtn;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +36,10 @@ public class MainActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-//        regBtn = findViewById(R.id.regBtn);
-//        regBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, dsInfo.class);
-//                startActivity(intent);
-//            }
-//        });
-//
+        sharedPreferences = getSharedPreferences("userLogin", MODE_PRIVATE);
+        // Check if user is logged in (has a phone number saved in SharedPreferences)
+        boolean isLoggedIn = sharedPreferences.contains("phoneNumber");
+
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
@@ -57,10 +54,21 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, login.class);
-                startActivity(intent);
-                finish();
+                if (isLoggedIn) {
+                    // User is logged in, directly go to dashboard
+                    Intent intent = new Intent(MainActivity.this, dashboard.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    // User is not logged in, show splash screen and login activity
+                    // ... (rest of your existing code for splash screen and login intent)
+                    Intent intent = new Intent(MainActivity.this, login.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         }, SPLASH_SCREEN);
+
+
     }
 }
