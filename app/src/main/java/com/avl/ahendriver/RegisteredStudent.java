@@ -61,19 +61,14 @@ public class RegisteredStudent {
     }
 
     // Constructor
-//    public RegisteredStudent(String requestId, String dsName, String userName, String userPhone, String timeSlot, String status) {
-//        this.requestId = requestId;
-//        this.dsName = dsName;
-//        this.userName = userName;
-//        this.userPhone = userPhone;
-//        this.timeSlot = timeSlot;
-//        this.status = status;
-//    }
-    public RegisteredStudent(String userName, String userPhone, String timeSlot, String status) {
+    public RegisteredStudent(String requestId, String dsName, String userName, String userPhone, String timeSlot, String status) {
+        this.requestId = requestId;
+        this.dsName = dsName;
         this.userName = userName;
         this.userPhone = userPhone;
         this.timeSlot = timeSlot;
         this.status = status;
     }
+
 
 }
