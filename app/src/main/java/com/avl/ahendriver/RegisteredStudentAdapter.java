@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,8 @@ import java.util.List;
 public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStudentAdapter.ViewHolder> {
     private List<RegisteredStudent> studentsList;
 
-    public void RegisteredStudentsAdapter(List<RegisteredStudent> studentsList) {
+
+    public RegisteredStudentAdapter(List<RegisteredStudent> studentsList) {
         this.studentsList = studentsList;
     }
 
@@ -60,12 +62,15 @@ public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStu
         holder.acceptButton.setOnClickListener(v -> {
             // Update status in Firebase to 'accepted'
             updateStatus(student.getRequestId(), "accepted");
+            Toast.makeText(holder.itemView.getContext(), "Request Accepted !!", Toast.LENGTH_SHORT).show();
         });
 
         // Handle reject button click
         holder.declineButton.setOnClickListener(v -> {
             // Update status in Firebase to 'rejected'
             updateStatus(student.getRequestId(), "rejected");
+            Toast.makeText(holder.itemView.getContext(), "Request Declined !!", Toast.LENGTH_SHORT).show();
+
         });
     }
 
@@ -79,7 +84,6 @@ public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStu
         requestRef.child("status").setValue(newStatus)
                 .addOnSuccessListener(aVoid -> {
                     // Status updated successfully
-                    // You can show a toast or perform any other action here
                 })
                 .addOnFailureListener(e -> {
                     // Failed to update status
