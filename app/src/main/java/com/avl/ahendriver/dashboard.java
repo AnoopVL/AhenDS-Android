@@ -68,7 +68,8 @@ public class dashboard extends AppCompatActivity {
         registeredStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(dashboard.this, "Ruku zara Sabar Karo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(dashboard.this, registeredStudents.class);
+                startActivity(intent);
             }
         });
 
