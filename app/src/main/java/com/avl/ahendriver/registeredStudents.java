@@ -63,39 +63,20 @@ public class registeredStudents extends AppCompatActivity {
         adapter = new RegisteredStudentAdapter(studentsList);
         recyclerView.setAdapter(adapter);
 
-        // Load data from Firebase
-        loadData();
-
         searchBtn.setOnClickListener(v->{
             String dsName = dsNameInput.getEditText().getText().toString().trim();
             if (!dsName.isEmpty()) {
-                noRequestText.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
-                filterRequests(dsName);
+//                noRequestText.setVisibility(View.GONE);
+//                recyclerView.setVisibility(View.VISIBLE);
+                fetchBookingRequests(dsName);
             } else {
                 // Show message to enter driving school name
                 Toast.makeText(this, "Please enter driving school name", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    private void loadData() {
-        requestsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                studentsList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    RegisteredStudent student = snapshot.getValue(RegisteredStudent.class);
-                    studentsList.add(student);
-                }
-                adapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle database error
-            }
-        });
-    }
-    private void filterRequests(String dsName) {
+
+    private void fetchBookingRequests(String dsName) {
         Query query = requestsRef.orderByChild("dsName").equalTo(dsName);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -105,6 +86,13 @@ public class registeredStudents extends AppCompatActivity {
                     RegisteredStudent student = snapshot.getValue(RegisteredStudent.class);
                     studentsList.add(student);
                 }
+                if (studentsList.isEmpty()) {
+                    noRequestText.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    noRequestText.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
                 adapter.notifyDataSetChanged();
             }
             @Override
@@ -113,4 +101,39 @@ public class registeredStudents extends AppCompatActivity {
             }
         });
     }
+//    private void loadData() {
+//        requestsRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                studentsList.clear();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    RegisteredStudent student = snapshot.getValue(RegisteredStudent.class);
+//                    studentsList.add(student);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Handle database error
+//            }
+//        });
+//    }
+//    private void filterRequests(String dsName) {
+//        Query query = requestsRef.orderByChild("dsName").equalTo(dsName);
+//        query.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                studentsList.clear();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    RegisteredStudent student = snapshot.getValue(RegisteredStudent.class);
+//                    studentsList.add(student);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Handle database error
+//            }
+//        });
+//    }
 }
