@@ -29,6 +29,7 @@ public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStu
         // For example:
         TextView userNameTextView;
         TextView userPhoneTextView;
+        TextView timeSlotTextView;
         Button acceptButton;
         Button declineButton;
 
@@ -38,6 +39,7 @@ public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStu
             // For example:
             userNameTextView = itemView.findViewById(R.id.studentName);
             userPhoneTextView = itemView.findViewById(R.id.studentPhone);
+            timeSlotTextView = itemView.findViewById(R.id.timeSlotTextView);
             acceptButton = itemView.findViewById(R.id.acceptBtn);
             declineButton = itemView.findViewById(R.id.declineBtn);
         }
@@ -57,6 +59,8 @@ public class RegisteredStudentAdapter extends RecyclerView.Adapter<RegisteredStu
         // For example:
         holder.userNameTextView.setText(student.getUserName());
         holder.userPhoneTextView.setText(student.getUserPhone());
+        holder.timeSlotTextView.setText(student.getTimeSlot());
+
 
         // Handle accept button click
         holder.acceptButton.setOnClickListener(v -> {

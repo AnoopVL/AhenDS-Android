@@ -8,15 +8,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class profile extends AppCompatActivity {
 
+    private TextInputEditText full_name_edittext, email_edittext, phone_edittext;
+    private TextView fullName_textView;
     private Button signOutBtn;
     private SharedPreferences sharedPreferences;
 
@@ -38,8 +50,39 @@ public class profile extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-        signOutBtn = findViewById(R.id.signOutBnt);
+        signOutBtn = findViewById(R.id.signOutBtn);
+        fullName_textView = findViewById(R.id.fullName_textView);
+        full_name_edittext = findViewById(R.id.full_name_edittext);
+        email_edittext = findViewById(R.id.email_edittext);
+        phone_edittext = findViewById(R.id.phone_edittext);
         sharedPreferences = getSharedPreferences("userLogin", MODE_PRIVATE);
+        String phoneNumber = sharedPreferences.getString("phoneNumber", "");
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(phoneNumber);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Check if the user data exists
+                if (dataSnapshot.exists()) {
+                    // Get the user data
+                    String fullName = dataSnapshot.child("name").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
+                    String phone = dataSnapshot.child("phone").getValue(String.class);
+
+                    // Set the retrieved data to the corresponding views
+                    fullName_textView.setText(fullName);
+                    full_name_edittext.setText(fullName);
+                    email_edittext.setText(email);
+                    phone_edittext.setText(phone);
+                } else {
+                    // Handle the case where the user data does not exist
+                    Toast.makeText(profile.this, "User data not found!", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
