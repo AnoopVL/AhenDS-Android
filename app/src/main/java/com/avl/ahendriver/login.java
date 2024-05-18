@@ -88,7 +88,7 @@ public class login extends AppCompatActivity {
     private Boolean validatePassword() {
         String val = Password.getEditText().getText().toString();
         if (val.isEmpty()) {
-            Password.setError("Field cannot be empty");
+            Password.setError("Field can't be empty");
             return false;
         }
         else {
